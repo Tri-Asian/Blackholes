@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        
+        <!--Fonts in the app-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Carme&display=swap" rel="stylesheet">
+
+    </head>
+
+
+
+
+    <body>
+        
+        <!--Main Menu-->
+        <div class="Main-Menu" id="Main-Menu">
+            <h3>Main Menu</h3>
+            <button onclick="Admin_Login()">Admin Login</button>
+            <button onclick="User_Login()">User Login</button>
+        </div>
+
+
+        <!--Admin Process-->
+        <!--Admin Login-->
+        <div class="Admin-Login" id="Admin-Login">
+            <h3 style="padding-top: 20%;">Admin Login</h3>
+            <br>
+            <input type="password" placeholder="Enter Password" id="Password">
+            <p id="Wrong-Password" style="color:red;"></p>
+            <button onclick="Admin_Password()">Sumbit</button>
+        </div>
+
+
+        <!--Admin Menu-->
+        <div class="Admin-Menu" id="Admin-Menu">
+            <h3 style="padding-top: 15%;">Admin Menu</h3>
+            <button onclick="Admin_Insert_Blackhole()">Add Information about New Black Hole</button>
+            <br>
+            <button onclick="Admin_Modify_Blackhole_Button()">Modify Information about Black Holes</button>
+        </div>
+
+
+        <!--Admin Insert Black Holes-->
+        <div class="Admin-Insert-Blackholes" id="Admin-Insert-Blackholes">
+            <h3>Add Information about new Black Hole</h3>
+            <input type="text" placeholder="Enter Name of Black Hole" id="BName">
+            <input type="text" placeholder="Blackhole Image Link" id="Image">
+            <input type="text" placeholder="Blackhole Type" id="Type">
+            <input type="text" placeholder="Blackhole Location" id="Location">
+            <input type="text" placeholder="Blackhole Distance From Sun" id="Distance">
+            <input type="text" placeholder="Blackhole Mass" id="Mass">
+            <input type="text" placeholder="Blackhole Size" id="Size">
+            <input type="text" placeholder="Blackhole Discovery" id="Discovery">
+            <input type="text" placeholder="Blackhole Facts" id="Facts">
+            <button onclick="Admin_Insert()">Add Blackhole</button>
+        </div>
+
+        <div class="Admin-Inserted-Blackholes" id="Admin-Inserted-Blackholes">
+            <h3 id="Inserting-Blackhole" style="color:white"></h3>
+            <button onclick="Back_to_Admin_Menu('Admin-Inserted-Blackholes')">Back to Admin Menu</button>
+        </div>
+
+        <!--Admin Modify Blackholes-->
+        <div class="Admin-Modify-Table" id="Admin-Modify-Table">
+            <ul>
+                <li id="Modify-Table-Header">
+                    <div>Image</div>
+                    <div>Black Hole</div>
+                    <div>Type</div>
+                    <div>Location</div>
+                    <div>Distance</div>     
+                </li>
+                <div class="Web_Data" id="Web_Data">
+                </div>
+            </ul>
+
+
+            <div class="Update_Blackhole_Pop_Up" id="Update_Blackhole_Pop_Up">
+                <div class="colum-pop_up">
+                    <div contenteditable="True" id="Name_Update">Name</div>
+                    <div contenteditable="True" id="Type_Update">Type</div>
+                    
+                    <div contenteditable="True" id="Image_Update"><img src=""></div>
+                    <div contenteditable="True" id="Location_Update">location</div>
+                </div>
+                
+                <div class="colum-pop_up">
+                    <div contenteditable="True" id="Distance_Update">distance</div>
+                    <div contenteditable="True" id="Mass_Update">mass</div>
+                    <div contenteditable="True" id="Size_Update">size</div>
+                    <div contenteditable="True" id="Method_Update">method</div>
+                </div>
+    
+                <div class="colum-pop_up">
+                    <div contenteditable="True" id="Facts_Update">facts</div>
+                    <button id="Update_btn" onclick="Update_Blackhole()">Update Blackhole</button>
+                </div>
+            </div>
+        </div>
+
+        <!--User Menu-->
+        <div class="User-Menu" id="User-Menu">
+            <h3>User Menu</h3>
+            <button onclick="Blackhole_Library()">Blackhole Library</button>
+            <button onclick="Search_Blackhole_Page()">Search for a Specific Blackhole</button>
+        </div>
+
+        <!--User's Blackhole Library-->
+        <div class="Blackhole-Library" id="Blackhole-Library">
+            <ul>
+                <li id="Blackhole-Table">
+                    <div>Image</div>
+                    <div>Black Hole</div>
+                    <div>Type</div>
+                    <div>Location</div>
+                    <div>Distance</div>  
+                </li>
+                <div class="Web_Data" id="Web_Data3"></div>
+            </ul>
+
+            <div class="User_Blackhole_GUI" id="User_Blackhole_GUI">
+                <div class="User_Blackhole_Display">
+                    <img id="Image_Display" src="">
+                    <h3>Name</h3>
+                    <div id="Name_Display"></div>
+                </div>
+                <div class="User_Blackhole_Display">
+                    <h3>Type</h3>
+                    <div id="Type_Display"></div>
+                    <h3>Location</h3>
+                    <div id="Location_Display"></div>
+                    <h3>Distance</h3>
+                    <div id="Distance_Display"></div>
+                    <h3>Mass</h3>
+                    <div id="Mass_Display"></div>
+                    <h3>Size</h3>
+                    <div id="Size_Display"></div>
+                    <h3>Method</h3>
+                    <div id="Method_Display"></div>
+                </div>
+                <div class="User_Blackhole_Display">
+                    <h3>Facts</h3>
+                    <div id="Facts_Display"></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Search for a Blackhole-->
+        <div class="Search-Blackhole-Page" id="Search-Blackhole-Page">
+            <h3>Find a certain Blackhole</h3>
+            <input type="text" placeholder="Enter Blackhole Name" id="Blackhole-Name-Search">
+            <p>and or</p>
+            <input type="text" placeholder="Enter Blackhole Type" id="Blackhole-Type-Search">
+            <p id="Blackhole-Not-Found" style="color:red;"></p>
+            <button onclick="Search_Specific_Blackhole()">Find Blackhole</button>
+        </div>
+
+        <div class="Specific-Blackhole-Page" id="Specific-Blackhole-Page">
+            <ul>
+                <li id="Specific-Table-Header">
+                    <div>Image</div>
+                    <div>Black Hole</div>
+                    <div>Type</div>
+                    <div>Location</div>
+                    <div>Distance</div>     
+                </li>
+                <div class="Web_Data" id="Web_Data5">
+                </div>
+            </ul>
+
+            <div class="User_Specific_GUI" id="User_Specific_GUI">
+                <div class="User_Blackhole_Display1">
+                    <img id="Image_Display1" src="">
+                    <h3>Name</h3>
+                    <div id="Name_Display1"></div>
+                </div>
+                <div class="User_Blackhole_Display1">
+                    <h3>Type</h3>
+                    <div id="Type_Display1"></div>
+                    <h3>Location</h3>
+                    <div id="Location_Display1"></div>
+                    <h3>Distance</h3>
+                    <div id="Distance_Display1"></div>
+                    <h3>Mass</h3>
+                    <div id="Mass_Display1"></div>
+                    <h3>Size</h3>
+                    <div id="Size_Display1"></div>
+                    <h3>Method</h3>
+                    <div id="Method_Display1"></div>
+                </div>
+                <div class="User_Blackhole_Display1">
+                    <h3>Facts</h3>
+                    <div id="Facts_Display1"></div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+
+
+
+    <script>
+        var current=null
+        //Main Menu
+        function Admin_Login(){
+            document.getElementById("Main-Menu").style.display="none";
+            document.getElementById("Admin-Login").style.display="block";
+        }
+
+        //Admin Login
+        function Admin_Password(){
+            pywebview.api.Pass_Check(document.getElementById("Password").value).then(Admin_Menu);
+        }
+
+        function Admin_Menu(result){
+            if (result) {
+                document.getElementById("Admin-Login").style.display="none";
+                document.getElementById("Admin-Menu").style.display="block"}
+
+            else{
+                document.getElementById("Wrong-Password").innerText="Incorrect Password Entered";
+            }
+        }
+
+        function Back_to_Admin_Menu(id){
+            document.getElementById(id).style.display="none";
+            document.getElementById("Admin-Menu").style.display="block"
+        }
+
+
+        //Admin Insert Blackhole Menu        
+        function Admin_Insert_Blackhole(){
+            document.getElementById("Admin-Menu").style.display="none";
+            document.getElementById("Admin-Insert-Blackholes").style.display="flex"
+        }
+        
+        function Admin_Insert(){
+            pywebview.api.insert_Blackhole(
+                    document.getElementById("BName").value,
+                    document.getElementById("Image").value,
+                    document.getElementById("Type").value,
+                    document.getElementById("Location").value,
+                    document.getElementById("Distance").value,
+                    document.getElementById("Mass").value,
+                    document.getElementById("Size").value,
+                    document.getElementById("Discovery").value,
+                    document.getElementById("Facts").value,
+                ).then(Admin_Insert_Result)
+            document.getElementById("BName").value="";
+            document.getElementById("Image").value="";
+            document.getElementById("Type").value="";
+            document.getElementById("Location").value="";
+            document.getElementById("Distance").value="";
+            document.getElementById("Mass").value="";
+            document.getElementById("Size").value="";
+            document.getElementById("Discovery").value="";
+            document.getElementById("Facts").value=""
+        }
+        
+        function Admin_Insert_Result(result){
+            if(result){
+                document.getElementById("Admin-Insert-Blackholes").style.display="none";
+                document.getElementById("Admin-Inserted-Blackholes").style.display="block";
+                document.getElementById("Inserting-Blackhole").innerText="Black Hole Entered";
+            }
+            
+            else{
+                document.getElementById("Admin-Insert-Blackholes").style.display="none";
+                document.getElementById("Admin-Inserted-Blackholes").style.display="block";
+                document.getElementById("Inserting-Blackhole").innerText="Black Hole already Entered";
+            }
+            document.getElementById("Inserting-Blackhole").value=""
+        }
+
+
+        //Admin Modify Blackhole Functions
+        function Admin_Modify_Blackhole_Button(){
+            pywebview.api.Search_Blackholes().then(Admin_Modify_Blackhole);
+        }
+        function Admin_Modify_Blackhole(result){console.log(result)
+            document.getElementById("Admin-Menu").style.display="none";
+            document.getElementById("Admin-Modify-Table").style.display="block";
+            document.getElementById("Web_Data").innerHTML=result;
+        }
+
+        let cid=null
+
+        function Display_Pop_Up_Blackhole(id){
+            pywebview.api.pop_up_data(id).then(append_data);
+            cid=id;
+            document.getElementById("Update_Blackhole_Pop_Up").style.display="flex";
+        }
+        function append_data(data){
+            document.getElementById("Name_Update").innerText=data[0];
+            document.getElementById("Type_Update").innerText=data[1]; 
+            document.getElementById("Image_Update").src=data[2]; 
+            document.getElementById("Location_Update").innerText=data[3]; 
+            document.getElementById("Distance_Update").innerText=data[4]; 
+            document.getElementById("Mass_Update").innerText=data[5]; 
+            document.getElementById("Size_Update").innerText=data[6]; 
+            document.getElementById("Method_Update").innerText=data[7]; 
+            document.getElementById("Facts_Update").innerText=data[8];
+        }
+
+        function Update_Blackhole(){
+            pywebview.api.Update_Blackholes(cid,
+                document.getElementById("Name_Update").innerText,
+                document.getElementById("Type_Update").innerText,
+                document.getElementById("Image_Update").innerText,
+                document.getElementById("Location_Update").innerText,
+                document.getElementById("Distance_Update").innerText,
+                document.getElementById("Mass_Update").innerText,
+                document.getElementById("Size_Update").innerText,
+                document.getElementById("Method_Update").innerText,
+                document.getElementById("Facts_Update").innerText)
+            go_menu();
+        }
+
+        function go_menu(){
+            
+            document.getElementById("Update_Blackhole_Pop_Up").style.display="none";
+            document.getElementById("Admin-Modify-Table").style.display="none";
+            document.getElementById("Admin-Menu").style.display="block"
+        }
+
+        //User Login
+        function User_Login(){
+            document.getElementById("Main-Menu").style.display="none";
+            document.getElementById("User-Menu").style.display="block";
+        }
+
+        //Display Blackhole Library
+        function Blackhole_Library(){
+            pywebview.api.Search_Blackholes_User().then(Display_Blackholes)
+        }
+
+        function Display_Blackholes(result){console.log(result)
+        document.getElementById("User-Menu").style.display="none";
+        document.getElementById("Blackhole-Library").style.display="block";
+        document.getElementById("Web_Data3").innerHTML=result;
+        }
+
+        function Display_User_Blackhole(id){
+            pywebview.api.User_Display(id).then(Display_Data);
+            cid=id;
+            document.getElementById("User_Blackhole_GUI").style.display="flex";
+        }
+
+        function Display_Data(data){
+            document.getElementById("Name_Display").innerText=data[0];
+            document.getElementById("Type_Display").innerText=data[1]; 
+            document.getElementById("Image_Display").src=data[2]; 
+            document.getElementById("Location_Display").innerText=data[3]; 
+            document.getElementById("Distance_Display").innerText=data[4]; 
+            document.getElementById("Mass_Display").innerText=data[5]; 
+            document.getElementById("Size_Display").innerText=data[6]; 
+            document.getElementById("Method_Display").innerText=data[7]; 
+            document.getElementById("Facts_Display").innerText=data[8];
+        }
+
+        //Find a Specific Blackhole
+        function Search_Blackhole_Page(){
+            document.getElementById("User-Menu").style.display="none";
+            document.getElementById("Search-Blackhole-Page").style.display="block";
+        }
+
+        function Search_Specific_Blackhole(){
+            name=null
+            type=null
+            if (document.getElementById("Blackhole-Name-Search").value!=""){
+                name=document.getElementById("Blackhole-Name-Search").value
+            }
+            if (document.getElementById("Blackhole-Type-Search").value!=""){
+                type=document.getElementById("Blackhole-Type-Search").value
+            }
+            pywebview.api.search_specific_blackhole(name,type
+            ).then(Display_Specific_Blackhole)
+            document.getElementById("Blackhole-Name-Search").value="";
+            document.getElementById("Blackhole-Type-Search").value="";
+        }
+
+        function Display_Specific_Blackhole(result){console.log(result)
+            if(result[0]){
+                document.getElementById("Search-Blackhole-Page").style.display="none";
+                document.getElementById("Specific-Blackhole-Page").style.display="block";
+                document.getElementById("Web_Data5").innerHTML=result[1];
+            }
+            else{
+                document.getElementById("Blackhole-Not-Found").innerHTML="Blackhole Not Found";
+            }
+        }
+
+        function Display_User_Specific(id){
+            pywebview.api.User_Display(id).then(Display_Data1);
+            cid=id;
+            document.getElementById("User_Specific_GUI").style.display="flex";
+        }
+
+        function Display_Data1(data){
+            document.getElementById("Name_Display1").innerText=data[0];
+            document.getElementById("Type_Display1").innerText=data[1]; 
+            document.getElementById("Image_Display1").src=data[2]; 
+            document.getElementById("Location_Display1").innerText=data[3]; 
+            document.getElementById("Distance_Display1").innerText=data[4]; 
+            document.getElementById("Mass_Display1").innerText=data[5]; 
+            document.getElementById("Size_Display1").innerText=data[6]; 
+            document.getElementById("Method_Display1").innerText=data[7]; 
+            document.getElementById("Facts_Display1").innerText=data[8];
+        }
+
+        
+        
+    </script>
+
+
+
+    <style>
+    
+        *{font-family: 'Carme', sans-serif;}
+
+        div{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;}
+
+        input{
+            width: 350px;
+            margin-bottom: 20px;
+            border: none;
+            height: auto;
+            padding: 10px;
+            border-color: white;
+            color: black;
+            border-radius: 50px;}   
+
+        body,html{
+            width:100%;
+            height: 100%;
+            background-color: black;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;}
+        
+        button{
+            border-radius: 20px;
+            width: 300px;
+            cursor: pointer;
+            transition: all ease-in-out .2s;
+            padding: 10px;
+            margin: 20px;
+            color: white;
+            border: 1px solid white;
+            background-color: rgba(0,0,0,0);}
+
+        button:hover{
+            background-color: rgba(225,225,225,1);
+            color: black;}
+        
+        .Main-Menu{
+            background-image: url(https://cdn.britannica.com/57/181857-050-972A4F96/Artist-rendering-matter-black-hole.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .Admin-Login{
+            background-image: url(https://cdn.britannica.com/57/181857-050-972A4F96/Artist-rendering-matter-black-hole.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: 40px;
+            align-items: center;
+            text-align: center;
+            display: none;}
+        
+        .Admin-Menu{
+            background-image: url(https://cdn.britannica.com/57/181857-050-972A4F96/Artist-rendering-matter-black-hole.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            align-items: center;
+            text-align: center;
+            display: none;}
+        
+        .Admin-Insert-Blackholes{
+            background-image: url(https://www.scienceabc.com/wp-content/uploads/2019/06/Black-hole-attracting-space-matter.-4k-video-3d-rendering-Illustrationu3ds.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            align-items: center;
+            text-align: center;
+            display: none;}
+        
+        .Admin-Inserted-Blackholes{
+            background-image: url(https://www.scienceabc.com/wp-content/uploads/2019/06/Black-hole-attracting-space-matter.-4k-video-3d-rendering-Illustrationu3ds.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: none;   
+        }
+
+        .Admin-Modify-Table {
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            display: none;
+        }
+
+        .Admin-Modify-Table li {
+            height: auto;
+            border-radius: 7px;
+            padding: 25px 30px;
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            margin: 15px;
+            background-color: blueviolet;
+        }
+
+        .Admin-Modify-Table ul li div {
+            width: 100%;
+            height: auto;
+            flex-basis: 20%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .Web_Data {
+            width: 100%;
+            height: auto;
+            align-items: center;
+            display: block;
+        }
+
+        .Web_Data li {
+            height: auto;
+            border-radius: 7px;
+            padding: 25px 30px;
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            margin: 15px;
+            background-color: blueviolet;
+        }
+
+        .Web_Data ul li div {
+            width: 100%;
+            height: auto;
+            flex-basis: 20%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .User-Menu{
+            background-image: url(https://cdn.britannica.com/57/181857-050-972A4F96/Artist-rendering-matter-black-hole.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: none;
+            align-items: center;
+            text-align: center;
+        }
+
+        .Blackhole-Library {
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            display: none;
+            text-align: center;
+        }
+
+        .Blackhole-Library li {
+            height: auto;
+            border-radius: 7px;
+            padding: 25px 30px;
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            margin: 15px;
+            background-color: blueviolet;
+        }
+
+        .Blackhole-Library ul li div {
+            width: 100%;
+            height: auto;
+            flex-basis: 20%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .Search-Blackhole-Page{
+            background-image: url(https://www.scienceabc.com/wp-content/uploads/2019/06/Black-hole-attracting-space-matter.-4k-video-3d-rendering-Illustrationu3ds.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: none;
+            text-align: center;
+            align-items: center;
+        }
+
+        .Specific-Blackhole-Page{
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            display: none;
+            text-align: center;
+        }
+
+        .Specific-Blackhole-Page li {
+            height: auto;
+            border-radius: 7px;
+            padding: 25px 30px;
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            margin: 15px;
+            background-color: blueviolet;
+        }
+
+        .Specific-Blackhole-Page ul li div {
+            width: 100%;
+            height: auto;
+            flex-basis: 20%;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+
+        .Update_Blackhole_Pop_Up{
+            display: none;
+            text-align: center;
+            align-items: center;
+            z-index: 2;
+            position: fixed;
+            left: 0;
+            color:white ;
+            top: 0;
+            background-color: #000000;
+            flex-direction: row;
+            width: 100%;
+            height:100%;
+        }
+        .colum-pop_up{
+          flex-basis: 35%;
+          width: 100%;
+          height: 100%;
+          display:flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center ;
+          
+          text-align: center ;
+        }
+
+        .User_Blackhole_GUI{
+            display: none;
+            text-align: center;
+            align-items: center;
+            z-index: 2;
+            position: fixed;
+            left: 0;
+            color:white ;
+            top: 0;
+            background-color: #000000;
+            flex-direction: row;
+            width: 100%;
+            height:100%;
+        }
+        .User_Blackhole_Display{
+            flex-basis: 35%;
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center ;
+            text-align: center ;
+        }
+
+        .User_Specific_GUI{
+            display: none;
+            text-align: center;
+            align-items: center;
+            z-index: 2;
+            position: fixed;
+            left: 0;
+            color:white ;
+            top: 0;
+            background-color: #000000;
+            flex-direction: row;
+            width: 100%;
+            height:100%;
+        }
+        .User_Blackhole_Display1{
+            flex-basis: 35%;
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center ;
+            text-align: center ;
+        }
+        
+
+    </style>
+
+</html>
