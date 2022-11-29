@@ -7,7 +7,7 @@ import webview
 
 #SQL Connection
 
-mydb=mysql.connect(host="localhost",user="root",password="Sriram@25112004",database="BlackHoles")
+mydb=mysql.connect(host="localhost",user="root",password="",database="BlackHoles")
 mycursor=mydb.cursor()
 
 #----------------------------------------------------------------------------------------------------#
